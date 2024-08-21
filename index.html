@@ -1,7 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>Hello World, im roglemorph</h1>
+    <p><a href="https://www.youtube.com/@roglemorph" target="_blank">Youtube channel</a></p>
+
+    <p>Pomodoro Timer</p>
+
+</head>
 <body>
-<h1>Hello World, im roglemorph</h1>
-<p><a href="https://www.youtube.com/@roglemorph" target="_blank">Youtube channel</a></p>
+    <h1>Pomodoro Timer</h1>
+    <form action="/start" method="post">
+        <label for="duration">Enter duration in minutes:</label>
+        <input type="number" id="duration" name="duration" min="1" required>
+        <button type="submit">Start Timer</button>
+    </form>
+
+    {% if is_running %}
+        <p>The timer is running!</p>
+    {% else %}
+        <p>The timer is not running.</p>
+    {% endif %}
 </body>
 </html>
