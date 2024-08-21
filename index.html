@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer App</title>
+</head>
+<body>
+    <h1>Timer Application</h1>
+    <form id="timerForm">
+        <label for="duration">Enter duration in minutes:</label>
+        <input type="number" id="duration" name="duration" required>
+        <button type="submit">Start Timer</button>
+    </form>
+    <p id="message"></p>
+    <p>Timer is running: <span id="isRunning">False</span></p>
+    <p>Remaining time: <span id="remainingTime">0</span> seconds</p>
+
+    <script>
+        document.getElementById('timerForm').onsubmit = function (event) {
+            event.preventDefault();
+            const duration = document.getElementById('duration').value;
+
+            fetch('https://roglemorph2.pythonanywhere.com/start', {  // Replace with your Flask app URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'duration': duration
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').innerText = data.message;
+                    // Optionally, start polling for status here
+                    checkTimerStatus();  // Start checking the timer status
+                })
+                .catch(error => console.error('Error:', error));
+        };
+
+        // Function to check the timer status
+        function checkTimerStatus() {
+            fetch('https://roglemorph2.pythonanywhere.com/status')  // Replace with your Flask app URL
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('isRunning').innerText = data.is_running;
+                    document.getElementById('remainingTime').innerText = data.remaining_time;
+                })
+                .catch(error => console.error('Error fetching status:', error));
+        }
+
+        // Poll the timer status every 1 second
+        setInterval(checkTimerStatus, 1000);
+    </script>
+</body>
+</html>
