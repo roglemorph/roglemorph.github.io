@@ -65,11 +65,78 @@
     </div>
 
     <div id="app">
-        <p>Enter time in seconds</p>
+
+        <label>Enter time in seconds for timer</label>
+        <label>Enter time in seconds</label>
+        <br>
+        <input type="number" id="timeInput" placeholder="Enter seconds" value="60">
         <div id="timer">60</div>
-        <button>Start</button>
-        <button>Stop</button>
-        <button>Reset</button>
+        <br>
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <button id="resetBtn">Reset</button>
+        <br>
+        <button class="link-btn" onclick="window.location.href='/files.html'">Various math review documents</button>
+
     </div>
+
+
+
+    <script>
+        let timer;
+        let seconds = 60;
+        let isRunning = false;
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const timeInput = document.getElementById('timeInput');
+
+        function updateDisplay() {
+            timerDisplay.textContent = seconds;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                seconds = parseInt(timeInput.value, 10) || 60;
+                updateDisplay();
+                timer = setInterval(() => {
+                    if (seconds > 0) {
+                        seconds--;
+                        updateDisplay();
+                    } else {
+                        stopTimer();
+                    }
+                }, 1000);
+                timeInput.disabled = true;
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            timeInput.disabled = false;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            seconds = parseInt(timeInput.value, 10) || 60;
+            updateDisplay();
+        }
+
+        startBtn.addEventListener('click', startTimer);
+        stopBtn.addEventListener('click', stopTimer);
+        resetBtn.addEventListener('click', resetTimer);
+
+        timeInput.addEventListener('input', function () {
+            if (!isRunning) {
+                seconds = parseInt(this.value, 10) || 60;
+                updateDisplay();
+            }
+        });
+
+        updateDisplay();
+    </script>
 </body>
 </html>
