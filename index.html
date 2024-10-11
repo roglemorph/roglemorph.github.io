@@ -1,88 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, my name is Roglemorph</title>
     <style>
-        /* Basic body styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        body, html {
             margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
-        /* Minimal container */
-        #app {
-            text-align: center;
-            width: 200px;
-        }
-
-        /* Timer display */
-        #timer {
-            font-size: 1.5rem;
-            margin: 15px 0;
-        }
-
-        /* Input styling */
-        input[type="number"] {
-            width: 100%;
-            padding: 5px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            border-radius: 3px;
-        }
-
-        /* Button styling */
-        button {
-            background-color: transparent;
-            border: 1px solid #333;
-            color: #333;
-            padding: 5px 10px;
-            font-size: 1rem;
-            margin: 5px 0;
-            cursor: pointer;
-            border-radius: 3px;
-            transition: background-color 0.2s;
-        }
-
-            button:hover {
-                background-color: #333;
-                color: #fff;
-            }
-
-        /* Styling for the link button */
-        .link-btn {
-            margin-bottom: 15px;
-        }
-
-
-        /*BANNER STUFF*/
         .banner {
             background-color: #f0f0f0;
             color: #333;
             text-align: center;
             padding: 40px 20px 20px;
-            font-family: Arial, sans-serif;
             position: relative;
             overflow: hidden;
         }
-
-            .banner h1 {
-                margin: 0;
-                font-size: 2em;
-                position: relative;
-                z-index: 2;
-            }
 
         .curved-line {
             position: absolute;
@@ -90,90 +26,45 @@
             left: 0;
             width: 100%;
             height: 30px;
-            background-image: url('/bannerloop.png');
+            background-image: url('/api/placeholder/200/30');
             background-repeat: repeat-x;
             background-size: auto 100%;
+        }
+
+        .banner h1 {
+            margin: 0;
+            font-size: 2em;
+            position: relative;
+            z-index: 2;
+        }
+
+        #app {
+            padding: 20px;
+        }
+
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-
-        <div class="banner">
-            <div class="curved-line"></div>
-            <h1>Welcome to My Website</h1>
-        </div>
-
-    <div id="app">
-
-        <label>Enter time in seconds</label>
-        <br>
-        <input type="number" id="timeInput" placeholder="Enter seconds" value="60">
-        <div id="timer">60</div>
-        <br>
-        <button id="startBtn">Start</button>
-        <button id="stopBtn">Stop</button>
-        <button id="resetBtn">Reset</button>
-        <br>
-
+    <div class="banner">
+        <div class="curved-line"></div>
+        <h1>Welcome to My Website</h1>
     </div>
 
-    <button class="link-btn" onclick="window.location.href='/files.html'">Various math review documents</button>
+    <div>    
+        <p>Various math review documents</p>   
+    </div>
 
-    <script>
-        let timer;
-        let seconds = 60;
-        let isRunning = false;
-        const timerDisplay = document.getElementById('timer');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const timeInput = document.getElementById('timeInput');
-
-        function updateDisplay() {
-            timerDisplay.textContent = seconds;
-        }
-
-        function startTimer() {
-            if (!isRunning) {
-                isRunning = true;
-                seconds = parseInt(timeInput.value, 10) || 60;
-                updateDisplay();
-                timer = setInterval(() => {
-                    if (seconds > 0) {
-                        seconds--;
-                        updateDisplay();
-                    } else {
-                        stopTimer();
-                    }
-                }, 1000);
-                timeInput.disabled = true;
-            }
-        }
-
-        function stopTimer() {
-            clearInterval(timer);
-            isRunning = false;
-            timeInput.disabled = false;
-        }
-
-        function resetTimer() {
-            stopTimer();
-            seconds = parseInt(timeInput.value, 10) || 60;
-            updateDisplay();
-        }
-
-        startBtn.addEventListener('click', startTimer);
-        stopBtn.addEventListener('click', stopTimer);
-        resetBtn.addEventListener('click', resetTimer);
-
-        timeInput.addEventListener('input', function () {
-            if (!isRunning) {
-                seconds = parseInt(this.value, 10) || 60;
-                updateDisplay();
-            }
-        });
-
-        updateDisplay();
-    </script>
+    <div id="app">
+        <p>Enter time in seconds</p>
+        <div id="timer">60</div>
+        <button>Start</button>
+        <button>Stop</button>
+        <button>Reset</button>
+    </div>
 </body>
 </html>
