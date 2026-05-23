@@ -1,0 +1,211 @@
+:root {
+    --color-bg: #f4f6f8;
+    --color-surface: #ffffff;
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+    --color-accent: #3b6ea5;
+    --color-accent-hover: #2f5883;
+    --color-border: #e5e7eb;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+    --radius: 10px;
+    --max-width: 720px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.5;
+}
+
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-decoration {
+    height: 28px;
+    background-image: url("/bannerloop.png");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+}
+
+.header-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.75rem 1.25rem 1.25rem;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+    background: rgba(59, 110, 165, 0.08);
+}
+
+.nav-link.is-active {
+    color: var(--color-accent);
+    background: rgba(59, 110, 165, 0.12);
+    font-weight: 600;
+}
+
+.content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.card + .card {
+    margin-top: 1.25rem;
+}
+
+.card-title {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.75rem;
+    margin-right: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.link-button:hover {
+    background: rgba(59, 110, 165, 0.06);
+    border-color: rgba(59, 110, 165, 0.25);
+}
+
+.page-intro {
+    margin: 0 0 1.25rem;
+    color: var(--color-text-muted);
+}
+
+.contact-line {
+    margin: 0 0 1.25rem;
+}
+
+.contact-line a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.contact-line a:hover {
+    text-decoration: underline;
+}
+
+.file-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.file-list a {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.file-list a:hover {
+    border-color: rgba(59, 110, 165, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+.file-list a::before {
+    content: "PDF";
+    display: inline-block;
+    margin-right: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    background: rgba(59, 110, 165, 0.1);
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+}
+
+.project-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.project-list a {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.project-list a:hover {
+    border-color: rgba(59, 110, 165, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
